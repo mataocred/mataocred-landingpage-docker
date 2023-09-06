@@ -3,7 +3,7 @@ name: mataocred_landingpage
 services:
   mataocred_landingpage_web:
     container_name: mataocred_landingpage_web
-    image: vitor2128/mataocred-landingpage-web:1.0.1
+    image: vitor2128/mataocred-landingpage-web:1.0.2
     restart: unless-stopped
     networks:
       - mataocred_landingpage_network
@@ -23,15 +23,15 @@ services:
     networks:
       - mataocred_landingpage_network
 
-  certbot:
-    image: certbot/certbot
-    container_name: certbot
-    networks:
-      - mataocred_landingpage_network
-    volumes:
-      - ./certbot/conf:/etc/letsencrypt
-      - ./certbot/www:/var/www/certbot
-    command: certonly --webroot -w /var/www/certbot --force-renewal --email mataocred@gmail.com -d mataocred.com.br --agree-tos
+  # certbot:
+  #   image: certbot/certbot
+  #   container_name: certbot
+  #   networks:
+  #     - mataocred_landingpage_network
+  #   volumes:
+  #     - ./certbot/conf:/etc/letsencrypt
+  #     - ./certbot/www:/var/www/certbot
+  #   command: certonly --webroot -w /var/www/certbot --force-renewal --email mataocred@gmail.com -d mataocred.com.br --agree-tos
 
 networks:
   mataocred_landingpage_network:
